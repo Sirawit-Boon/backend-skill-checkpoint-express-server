@@ -35,15 +35,15 @@ answersRouter.post("/:answerId/vote", async (req, res) => {
       });
     }
     await connectionPool.query(
-      `insert into question_votes (vote, question_id) values ($1, $2)`,
+      `insert into answer_votes (vote, answer_id) values ($1, $2)`,
       [vote, answerId]
     );
     return res.status(200).json({
-      message: `Vote on the question has been recorded successfully.`,
+      message: `Vote on the answer has been recorded successfully.`,
     });
   } catch (e) {
     return res.status(500).json({
-      message: `Unable to vote question`,
+      message: `Unable to vote answer`,
       error: e.message,
     });
   }

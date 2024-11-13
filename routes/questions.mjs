@@ -131,7 +131,7 @@ questionRouter.delete("/:questionId", async (req, res) => {
   const questionId = req.params.questionId;
   try {
     const result = await connectionPool.query(
-      `delete from question where id = $1`,
+      `delete from questions where id = $1`,
       [questionId]
     );
     if (result.rowCount === 0) {
