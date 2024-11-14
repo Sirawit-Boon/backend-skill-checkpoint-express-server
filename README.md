@@ -162,7 +162,7 @@ This all of list is very helpfull to do this project
 [issues-shield]: https://img.shields.io/github/issues/Sirawit-Boon/backend-skill-checkpoint-express-server.svg?style=for-the-badge
 [issues-url]: https://github.com/Sirawit-Boon/backend-skill-checkpoint-express-server/pulls
 [license-shield]: https://img.shields.io/github/license/Sirawit-Boon/backend-skill-checkpoint-express-server.svg?style=for-the-badge
-[license-url]: https://github.com/Sirawit-Boon/backend-skill-checkpoint-express-server/tree/main/LICENSE.txt
+[license-url]: https://github.com/Sirawit-Boon/backend-skill-checkpoint-express-server/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: www.linkedin.com/in/sirawit-boonthon
 [product-screenshot]: images/screenshot2.png
