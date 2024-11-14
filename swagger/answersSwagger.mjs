@@ -3,6 +3,7 @@
  * /answers:
  *   get:
  *     summary: Get all answers
+ *     tags: [Answers]
  *     responses:
  *       '200':
  *         description: Successfully retrieved answers
@@ -13,6 +14,7 @@
  * /answers/{answerId}/vote:
  *   post:
  *     summary: Vote on an answer
+ *     tags: [Answers]
  *     parameters:
  *       - in: path
  *         name: answerId

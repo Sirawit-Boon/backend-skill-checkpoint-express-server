@@ -4,11 +4,13 @@
  * /questions:
  *   get:
  *     summary: Get all questions
+ *     tags: [Questions]
  *     responses:
  *       '200':
  *         description: Successfully retrieved questions
  *   post:
  *     summary: Create a new question
+ *     tags: [Questions]
  *     requestBody:
  *       required: true
  *       content:
@@ -30,12 +32,83 @@
  *         description: Question created successfully
  */
 
+/**
+ * @swagger
+ * /questions/search:
+ *   get:
+ *     summary: "Search questions by category and/or title"
+ *     tags: [Questions ]
+ *     description: "Returns questions filtered by category and/or title."
+ *     parameters:
+ *       - name: "category"
+ *         in: "query"
+ *         description: "The category of the question (optional)"
+ *         required: false
+ *         schema:
+ *           type: "string"
+ *       - name: "title"
+ *         in: "query"
+ *         description: "The title of the question (optional)"
+ *         required: false
+ *         schema:
+ *           type: "string"
+ *     responses:
+ *       200:
+ *         description: "A list of questions matching the search parameters."
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: "object"
+ *               properties:
+ *                 data:
+ *                   type: "array"
+ *                   items:
+ *                     type: "object"
+ *                     properties:
+ *                       id:
+ *                         type: "integer"
+ *                         description: "The ID of the question"
+ *                       title:
+ *                         type: "string"
+ *                         description: "The title of the question"
+ *                       description:
+ *                         type: "string"
+ *                         description: "The description of the question"
+ *                       category:
+ *                         type: "string"
+ *                         description: "The category of the question"
+ *       400:
+ *         description: "Invalid search parameters"
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: "object"
+ *               properties:
+ *                 message:
+ *                   type: "string"
+ *                   example: "Invalid search parameters."
+ *       500:
+ *         description: "Unable to fetch questions"
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: "object"
+ *               properties:
+ *                 message:
+ *                   type: "string"
+ *                   example: "Unable to fetch questions."
+ *                 error:
+ *                   type: "string"
+ *                   example: "Internal server error"
+ */
+
 // Grouped documentation by question/:questionId path
 /**
  * @swagger
  * /questions/{questionId}:
  *   get:
  *     summary: Get a question by ID
+ *     tags: [Questions]
  *     parameters:
  *       - in: path
  *         name: questionId
@@ -50,6 +123,7 @@
  *         description: Question not found
  *   put:
  *     summary: Update a question by ID
+ *     tags: [Questions]
  *     parameters:
  *       - in: path
  *         name: questionId
@@ -80,6 +154,7 @@
  *         description: Question not found
  *   delete:
  *     summary: Delete a question by ID
+ *     tags: [Questions]
  *     parameters:
  *       - in: path
  *         name: questionId
@@ -101,6 +176,7 @@
  * /questions/{questionId}/answers:
  *   get:
  *     summary: Get an answer for a question
+ *     tags: [Questions]
  *     parameters:
  *       - in: path
  *         name: questionId
@@ -115,6 +191,7 @@
  *         description: Question not found
  *   post:
  *     summary: Create an answer for a question
+ *     tags: [Questions]
  *     parameters:
  *       - in: path
  *         name: questionId
@@ -137,6 +214,7 @@
  *         description: Answer created successfully
  *   delete:
  *     summary: Delete an answer for a question
+ *     tags: [Questions]
  *     parameters:
  *       - in: path
  *         name: questionId
@@ -157,6 +235,7 @@
  * /questions/{questionId}/vote:
  *   post:
  *     summary: Vote on a question
+ *     tags: [Questions]
  *     parameters:
  *       - in: path
  *         name: questionId
