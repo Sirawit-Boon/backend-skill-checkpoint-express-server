@@ -1,15 +1,18 @@
 import express from "express";
 import cors from "cors";
-import questionRouter from "./routes/questions.mjs";
-import answersRouter from "./routes/answers.mjs";
+import path from "path";
 import swaggerJSDoc from "swagger-jsdoc";
-import swaggerUi from "swagger-ui-express";
+import { fileURLToPath } from "url";
+import swaggerUiDist from "swagger-ui-dist";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const port = process.env.PORT || 4000;
+
 app.use(cors());
 app.use(express.json());
-app.use("/questions", questionRouter);
-app.use("/answers", answersRouter);
 
 const swaggerOptions = {
   definition: {
@@ -38,7 +41,15 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// Serve Swagger UI on the homepage (/)
+app.use(
+  "/",
+  express.static(swaggerUiDist.getAbsoluteFSPath()),
+  (req, res) => {
+    res.sendFile(path.join(swaggerUiDist.getAbsoluteFSPath(), "index.html"));
+  }
+);
 
 app.get("/test", (req, res) => {
   return res.json("Server API is working 🚀");
