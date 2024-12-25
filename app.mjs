@@ -24,7 +24,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:4000",
+        url: "https://backend-questions-answers-express-server.vercel.app/",
       },
     ],
   },
@@ -38,7 +38,7 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.get("/test", (req, res) => {
   return res.json("Server API is working 🚀");
